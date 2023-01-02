@@ -1,6 +1,8 @@
 package main
 
 import (
+	"os"
+
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/harish1907/go-udemy/database"
@@ -8,6 +10,7 @@ import (
 )
 
 func init() {
+	database.EnviormentVariable()
 	database.DBConnection()
 }
 
@@ -17,5 +20,5 @@ func main() {
 		AllowCredentials: true,
 	}))
 	routes.SetupRoute(app)
-	app.Listen(":3000")
+	app.Listen(os.Getenv("PORT"))
 }
