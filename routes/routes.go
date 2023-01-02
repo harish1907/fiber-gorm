@@ -14,9 +14,16 @@ func SetupRoute(app *fiber.App) {
 	app.Use(middleware.IsAuthenticated)
 	app.Get("/api/user", controllers.User)
 	app.Post("/api/logout", controllers.Logout)
+
 	app.Get("/api/users", controllers.AllUser)
 	app.Post("/api/createuser", controllers.CreateUsers)
 	app.Get("/api/users/:id", controllers.GetSingleUser)
 	app.Put("/api/users/:id", controllers.UpdateUser)
 	app.Delete("/api/users/:id", controllers.DeleteUser)
+
+	app.Get("/api/roles", controllers.AllRoles)
+	app.Post("/api/createrole", controllers.CreateRoles)
+	app.Get("/api/roles/:id", controllers.GetSingleRole)
+	app.Put("/api/roles/:id", controllers.UpdateRoles)
+	app.Delete("/api/roles/:id", controllers.DeleteRole)
 }

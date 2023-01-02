@@ -1,6 +1,7 @@
 package database
 
 import (
+	"github.com/harish1907/go-udemy/models"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
@@ -14,5 +15,5 @@ func DBConnection() {
 	if err != nil {
 		panic("DB connection error..")
 	}
-	// DB.AutoMigrate(&models.MyUser{})
+	DB.AutoMigrate(&models.MyUser{}, &models.Roles{})
 }

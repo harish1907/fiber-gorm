@@ -10,12 +10,16 @@ type MyUser struct {
 	Password  []byte `json:"-"`
 }
 
-
-func (user *MyUser) SetPassword(password string){
+func (user *MyUser) SetPassword(password string) {
 	hash, _ := bcrypt.GenerateFromPassword([]byte(password), 14)
 	user.Password = hash
 }
 
 func (user *MyUser) ComparePassword(password string) error {
 	return bcrypt.CompareHashAndPassword(user.Password, []byte(password))
+}
+
+type Roles struct {
+	ID   uint   `json:"id"`
+	Name string `json:"name"`
 }
