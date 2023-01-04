@@ -26,4 +26,6 @@ func SetupRoute(app *fiber.App) {
 	app.Get("/api/roles/:id", controllers.GetSingleRole)
 	app.Put("/api/roles/:id", controllers.UpdateRoles)
 	app.Delete("/api/roles/:id", controllers.DeleteRole)
+
+	app.Get("/api/view/permissions", controllers.AllViewPermissions)
 }

@@ -8,7 +8,7 @@ import (
 
 func AllUser(c *fiber.Ctx) error {
 	var users []models.MyUser
-	database.DB.Find(&users)
+	database.DB.Preload("Roles").Find(&users)
 	return c.JSON(users)
 }
 

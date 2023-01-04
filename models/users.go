@@ -8,6 +8,8 @@ type MyUser struct {
 	LastName  string `json:"last_name"`
 	Email     string `json:"email" gorm:"unique"`
 	Password  []byte `json:"-"`
+	RoleID uint `json:"roleid"`
+	Roles Roles `json:"role" gorm:"foreignkey:RoleID"`
 }
 
 func (user *MyUser) SetPassword(password string) {
@@ -22,4 +24,5 @@ func (user *MyUser) ComparePassword(password string) error {
 type Roles struct {
 	ID   uint   `json:"id"`
 	Name string `json:"name"`
+	Permissions []Permissions `json:"permissions" gorm:"many2many:roles_permissions"`
 }
